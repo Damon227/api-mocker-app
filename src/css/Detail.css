@@ -1,0 +1,12 @@
+.detail-field-name{
+    font-weight: bold;
+}
+
+.detail-item{
+    margin: 5px 0;
+}
+
+.detail-table-head-cell{
+    font-weight: 800;
+    /* background-color: blueviolet; */
+}

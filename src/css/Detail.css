@@ -10,3 +10,8 @@
     font-weight: 800;
     /* background-color: blueviolet; */
 }
+
+.detail-demo-button{
+    display: inline;
+    padding: 0 0 0 20px;
+}

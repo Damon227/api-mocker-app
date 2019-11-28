@@ -12,9 +12,6 @@ import { Link } from "react-router-dom";
 import '../css/NavMenu.css'
 
 export default class NavMenu extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
@@ -42,11 +39,6 @@ export default class NavMenu extends Component {
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/list">
                     List
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/detail">
-                    Detail
                   </NavLink>
                 </NavItem>
               </ul>

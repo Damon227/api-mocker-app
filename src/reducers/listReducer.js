@@ -3,13 +3,13 @@ const INIT = "INIT";
 export default (state, action) => {
   if (!state) {
     return {
-      rows: []
+      apiRows: []
     };
   }
   switch (action.type) {
     case INIT:
       return {
-        rows: _load()
+        apiRows: _load()
       };
     default:
       return state;
@@ -18,7 +18,9 @@ export default (state, action) => {
 
 const _load = () => {
   return [
-    { fieldName: "messageId", fieldType: "string", fieldDesc: "消息唯一Id" }
+    { path: "/api/message/get", desc: "查询消息", type: "GET" },
+    { path: "/api/message/send", desc: "发送消息", type: "POST" },
+    { path: "/api/messages", desc: "查询消息列表", type: "GET" }
   ];
 };
 

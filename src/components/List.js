@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,12 +8,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
-
-const rows = [
-  { fieldName: "messageId", fieldType: "string", fieldDesc: "消息唯一Id" },
-  { fieldName: "title", fieldType: "string", fieldDesc: "消息标题" },
-  { fieldName: "content", fieldType: "string", fieldDesc: "消息内容" }
-];
+import Button from "@material-ui/core/Button";
 
 const tableStyle = makeStyles(theme => ({
   headRoot: {
@@ -20,50 +16,54 @@ const tableStyle = makeStyles(theme => ({
   }
 }));
 
-const List = ({ rows, init }) => {
+const List = ({ apiRows, init }) => {
   const classes = tableStyle();
 
   return (
     <div>
+      <div style={{ textAlign: "right" }}>
+        <Button variant="outlined" color="primary" onClick={init}>
+          刷新
+        </Button>
+      </div>
       <div>
         <Paper>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell classes={{ root: classes.headRoot }}>
-                  字段名称
+                  接口地址
                 </TableCell>
                 <TableCell classes={{ root: classes.headRoot }}>
-                  字段类型
+                  接口描述
                 </TableCell>
                 <TableCell classes={{ root: classes.headRoot }}>
-                  字段描述
+                  请求方式
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(row => (
-                <TableRow key={row.fieldName}>
+              {apiRows.map(row => (
+                <TableRow key={row.path}>
                   <TableCell component="th" scope="row">
-                    {row.fieldName}
+                    <Link to={{ pathname: "/detail", state: row.path }}>
+                      {row.path}
+                    </Link>
                   </TableCell>
-                  <TableCell>{row.fieldType}</TableCell>
-                  <TableCell>{row.fieldDesc}</TableCell>
+                  <TableCell>{row.desc}</TableCell>
+                  <TableCell>{row.type}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </Paper>
       </div>
-      <div>
-        <button onClick={init}>刷新</button>
-      </div>
     </div>
   );
 };
 
 List.propTypes = {
-  rows: PropTypes.array.isRequired,
+  apiRows: PropTypes.array.isRequired,
   init: PropTypes.func.isRequired
 };
 

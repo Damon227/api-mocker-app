@@ -13,6 +13,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/list" component={List} />
       <Route exact path="/detail" component={Detail} />
+      <Route exact path="/detail/:path" component={Detail} />
     </Layout>
   );
 }

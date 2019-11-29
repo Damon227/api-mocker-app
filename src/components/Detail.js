@@ -7,7 +7,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import CustomizedDialog from "./CustomizedDialog";
 import Demo from "./Demo";
 
@@ -67,7 +66,7 @@ class Detail extends Component {
     //通过 this.props.location.state 获取上个页面传递的参数
     const path = this.props.location.state;
     let row = rows.find(t => t.path === path);
-
+    
     return (
       <div className="detail">
         <div>
@@ -79,8 +78,7 @@ class Detail extends Component {
                 openButtonName="调用示例"
                 title="接口调用示例"
                 closeButtonName="我知道了"
-                maxWidth="800px"
-                maxHeight="500px"
+                customStyle={{ variant: "contained", color: "primary", maxWidth:"800px", maxHeight:"500px" }}
               >
                 <Demo data={row} />
               </CustomizedDialog>

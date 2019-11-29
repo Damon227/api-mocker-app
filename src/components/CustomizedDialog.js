@@ -55,7 +55,7 @@ const MyDialog = props => {
   const classes = makeStyles(() => myDialogStyle)();
 
   return (
-    <Dialog classes={classes} onClose={props.onClose} open={props.open}>
+    <Dialog classes={classes} onClose={props.onClose} open={props.open} scroll="paper">
       {props.children}
     </Dialog>
   );
@@ -85,17 +85,29 @@ function CustomizedDialog(props) {
     setOpen(false);
   };
 
+  const getStyle = () => {
+    let style = { disabled: false };
+    if (props.customStyle.variant) {
+      style["variant"] = props.customStyle.variant;
+    }
+    if (props.customStyle.color) {
+      style["color"] = props.customStyle.color;
+    }
+
+    return style;
+  };
+
   return (
     <div style={{ display: "inline" }}>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button {...getStyle()} onClick={handleClickOpen} disabled={props.disabled}>
         {props.openButtonName}
       </Button>
       <MyDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-        maxHeight={props.maxHeight}
-        maxWidth={props.maxWidth}
+        maxHeight={props.customStyle.maxHeight}
+        maxWidth={props.customStyle.maxWidth}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           {props.title}
@@ -107,8 +119,8 @@ function CustomizedDialog(props) {
           <Button
             autoFocus
             onClick={handleClose}
-            variant="outlined"
-            color="primary"
+            variant={props.customStyle.variant}
+            color={props.customStyle.color}
           >
             {props.closeButtonName}
           </Button>
@@ -120,10 +132,25 @@ function CustomizedDialog(props) {
 
 CustomizedDialog.propTypes = {
   openButtonName: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
   title: PropTypes.string.isRequired,
   closeButtonName: PropTypes.string.isRequired,
-  maxWidth: PropTypes.string,
-  maxHeight: PropTypes.string
+  customStyle: PropTypes.shape({
+    maxWidth: PropTypes.string,
+    maxHeight: PropTypes.string,
+    variant: PropTypes.oneOf(["contained", "outlined"]),
+    color: PropTypes.oneOf(["primary", "secondary"])
+  })
+};
+
+CustomizedDialog.defaultProps = {
+  disabled: false,
+  customStyle: {
+    maxWidth: "80%",
+    maxHeight: "60%",
+    //variant: "contained",
+    color: "primary"
+  }
 };
 
 export default CustomizedDialog;

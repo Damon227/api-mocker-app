@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 
 const Demo = props => {
-  const handleClick = event => {
+  const handleClick = () => {
     // do something
     props.onClose();
   };
@@ -12,9 +12,7 @@ const Demo = props => {
     if (props.data.type === "GET") {
       if (props.data.requestParams.length > 0) {
         let params = "?";
-        props.data.requestParams.map(r => {
-          params += r.fieldName + "=1";
-        });
+        params += props.data.requestParams.map(r => r.fieldName + "=1");
         baseAddress += params;
       }
     }

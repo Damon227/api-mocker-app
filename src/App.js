@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 import Home from "./components/Home";
 import List from "./containers/List";
 import Detail from "./components/Detail";
+import Add from './components/Add'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/list" component={List} />
       <Route exact path="/detail" component={Detail} />
-      <Route exact path="/detail/:path" component={Detail} />
+      <Route exact path="/add" component={Add} />
     </Layout>
   );
 }

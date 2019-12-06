@@ -6,7 +6,8 @@ import Layout from "./components/Layout";
 import Home from "./components/Home";
 import List from "./containers/List";
 import Detail from "./components/Detail";
-import Add from './components/Add'
+import Add from "./containers/Add";
+import Calculator from './containers/Calculator'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route exact path="/list" component={List} />
       <Route exact path="/detail" component={Detail} />
       <Route exact path="/add" component={Add} />
+      <Route exact path="/calculator" component={Calculator} />
     </Layout>
   );
 }

@@ -9,7 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import '../css/List.css'
+import "../css/List.css";
 
 const tableStyle = makeStyles(theme => ({
   headRoot: {
@@ -29,9 +29,11 @@ const List = ({ apiRows, init }) => {
           </Button>
         </span>
         <span className="button">
-          <Button variant="outlined" color="primary" href="/add">
-            添加
-          </Button>
+          <Link to="/add" style={{ textDecoration: 'none' }}>
+            <Button variant="outlined" color="primary">
+              添加
+            </Button>
+          </Link>
         </span>
       </div>
       <div>

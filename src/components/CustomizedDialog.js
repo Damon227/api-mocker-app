@@ -148,7 +148,7 @@ CustomizedDialog.defaultProps = {
   customStyle: {
     maxWidth: "80%",
     maxHeight: "60%",
-    //variant: "contained",
+    variant: "contained",
     color: "primary"
   }
 };

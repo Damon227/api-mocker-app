@@ -41,6 +41,11 @@ export default class NavMenu extends Component {
                     List
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/calculator">
+                    Calculator
+                  </NavLink>
+                </NavItem>
               </ul>
             </Collapse>
           </Container>

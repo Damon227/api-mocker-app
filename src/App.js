@@ -8,6 +8,7 @@ import List from "./containers/List";
 import Detail from "./components/Detail";
 import Add from "./containers/Add";
 import Calculator from './containers/Calculator'
+import CalculateList from './containers/CalculateList'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route exact path="/detail" component={Detail} />
       <Route exact path="/add" component={Add} />
       <Route exact path="/calculator" component={Calculator} />
+      <Route exact path="/calculateList" component={CalculateList} />
     </Layout>
   );
 }

@@ -1,22 +1,22 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import 'antd/dist/antd.css';
+import "bootstrap/dist/css/bootstrap.css";
+import "antd/dist/antd.css";
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import rootReducer from "./reducers/rootReduer";
-
-const store = createStore(rootReducer);
+import { PersistGate } from "redux-persist/integration/react";
+import {store, persistor} from "./configureStore";
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );

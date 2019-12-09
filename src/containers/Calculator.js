@@ -12,20 +12,21 @@ class Calculator extends Component {
     const { getFieldDecorator } = this.props.form;
 
     const formItemLayout = {
+      layout: "horizontal",
       labelCol: {
-        xs: { span: 24 },
-        sm: { span: 8 }
+        xs: { span: 3 },
+        sm: { span: 6 }
       },
       wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 12 }
+        xs: { span: 3 },
+        sm: { span: 6 }
       }
     };
 
     const tailItemLayout = {
       wrapperCol: {
-        xs: { span: 24 },
-        sm: { span: 8, offset: 8 }
+        xs: { span: 6 },
+        sm: { span: 6, offset: 6 }
       }
     };
 
@@ -58,7 +59,7 @@ class Calculator extends Component {
           }
 
           this.props.init(result);
-          console.log(this.state)
+          this.props.history.push("/calculateList");
         }
       });
     };
@@ -78,7 +79,7 @@ class Calculator extends Component {
                   message: "格式错误，收房月租金为数字，精确到一位小数"
                 }
               ]
-            })(<Input addonAfter={<span>元/月</span>} />)}
+            })(<Input addonAfter={<span>元/月</span>} />)}  
           </Form.Item>
           <Form.Item label="空置月数">
             {getFieldDecorator("month", {
@@ -115,7 +116,7 @@ class Calculator extends Component {
           </Form.Item>
           <Form.Item {...tailItemLayout}>
             <Button type="primary" htmlType="submit">
-              计算
+              开始计算
             </Button>
           </Form.Item>
         </Form>
